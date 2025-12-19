@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Page, GeneratedStrategy } from '../types';
-import { TrendingUp, Users, Target, BarChart3, Bot, Sparkles, CheckCircle2, ArrowRight, Building2, Trophy, Star, Globe } from 'lucide-react';
+import { TrendingUp, Users, Target, BarChart3, Bot, Sparkles, CheckCircle2, ArrowRight, Star, Quote, Zap, ShieldCheck } from 'lucide-react';
 import { generateMarketingStrategy } from '../services/geminiService';
 
 interface HomeProps {
@@ -8,374 +8,202 @@ interface HomeProps {
 }
 
 const Home: React.FC<HomeProps> = ({ onNavigate }) => {
-  const [businessName, setBusinessName] = useState('');
-  const [industry, setIndustry] = useState('');
-  const [audience, setAudience] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [marketingProblem, setMarketingProblem] = useState('');
-  const [loading, setLoading] = useState(false);
   const [strategy, setStrategy] = useState<GeneratedStrategy | null>(null);
+  const [loading, setLoading] = useState(false);
 
   // Hero Animation Logic
-  const heroWords = [
-    "High-Impact SEO",
-    "Precision Paid Media",
-    "Authentic Influencers",
-    "Viral Social Strategy"
+  const bitterTruths = [
+    "Likes Don't Pay Your Rent.",
+    "Impressions Won't Scale You.",
+    "Engagement Isn't Revenue.",
+    "Fluff Reporting Is A Lie."
   ];
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [fade, setFade] = useState(true);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setFade(false); // Start fade out
+      setFade(false);
       setTimeout(() => {
-        setCurrentWordIndex((prev) => (prev + 1) % heroWords.length);
-        setFade(true); // Start fade in
-      }, 500); // Wait for fade out to finish
-    }, 3000); // Change every 3 seconds
-
+        setCurrentWordIndex((prev) => (prev + 1) % bitterTruths.length);
+        setFade(true);
+      }, 500);
+    }, 3500);
     return () => clearInterval(interval);
-  }, [heroWords.length]);
-
-  const handleGenerateStrategy = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!businessName || !industry || !phoneNumber) return;
-
-    setLoading(true);
-    const result = await generateMarketingStrategy(
-      businessName, 
-      industry, 
-      audience || 'General Public',
-      marketingProblem || 'General growth'
-    );
-    setStrategy(result);
-    setLoading(false);
-  };
+  }, [bitterTruths.length]);
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2301&auto=format&fit=crop')] bg-cover bg-center opacity-20"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/90 to-slate-950/60"></div>
+      {/* Hero Section: The Bitter Truth */}
+      <section className="relative h-[90vh] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 bg-slate-950">
+          <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-amber-500/20 via-transparent to-transparent"></div>
+        </div>
         
         <div className="relative z-10 max-w-6xl mx-auto px-4 text-center">
-          <div className="inline-block px-4 py-1 mb-8 border border-amber-500/30 rounded-full bg-amber-500/10 backdrop-blur-sm animate-fade-in">
-            <span className="text-amber-400 text-sm font-semibold tracking-wide uppercase">Premier Digital Growth Agency</span>
+          <div className="inline-block px-4 py-1 mb-6 border border-amber-500/30 rounded-full bg-amber-500/10 backdrop-blur-sm">
+            <span className="text-amber-400 text-sm font-bold tracking-widest uppercase">The Performance Agency</span>
           </div>
           
-          <h1 className="text-5xl md:text-8xl font-bold text-white mb-8 leading-tight tracking-tight min-h-[220px] md:min-h-[300px]">
-            We Deliver <br/>
-            <span 
-              className={`text-gradient-gold transition-opacity duration-500 block mt-2 pb-4 ${fade ? 'opacity-100' : 'opacity-0'}`}
-            >
-              {heroWords[currentWordIndex]}
+          <h1 className="text-5xl md:text-8xl font-black text-white mb-6 leading-tight tracking-tighter">
+            <span className={`block transition-opacity duration-500 ${fade ? 'opacity-100' : 'opacity-0'}`}>
+              {bitterTruths[currentWordIndex]}
             </span>
+            <span className="text-gradient-gold">We Deliver Profits.</span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-slate-300 mb-12 max-w-3xl mx-auto font-light leading-relaxed">
-            We transform ambitious businesses into industry leaders through data-driven strategies and premium execution.
+          <p className="text-xl md:text-2xl text-slate-300 mb-10 max-w-3xl mx-auto font-medium leading-relaxed">
+            Most agencies report on "Reach." We report on "Bank Transfers." We fix the gap between your marketing spend and your actual revenue.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
             <button 
-              onClick={() => {
-                const element = document.getElementById('strategy-generator');
-                element?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="bg-amber-500 hover:bg-amber-600 text-slate-950 px-10 py-4 rounded-full font-bold text-lg transition-all hover:scale-105 shadow-lg shadow-amber-500/20"
+              onClick={() => onNavigate(Page.CONTACT)}
+              className="bg-amber-500 hover:bg-amber-600 text-slate-950 px-10 py-5 rounded-full font-bold text-xl transition-all hover:scale-105 shadow-2xl shadow-amber-500/20 flex items-center gap-2"
             >
-              Get Free Strategy
+              Book a Free Profit Audit <ArrowRight className="w-6 h-6" />
             </button>
             <a 
-              href="https://wa.me/9717020895818"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border border-slate-600 hover:border-amber-500 bg-slate-900/50 backdrop-blur-md text-white hover:text-amber-500 px-10 py-4 rounded-full font-semibold text-lg transition-all flex items-center gap-2"
+              href="https://wa.me/971505975089"
+              className="text-white hover:text-amber-500 px-10 py-5 rounded-full font-bold text-lg transition-all border border-slate-700 hover:border-amber-500 bg-slate-900/40 backdrop-blur-md"
             >
-              WhatsApp Us
+              Chat with a Human
             </a>
           </div>
-          <p className="mt-12 text-slate-500 text-xs tracking-[0.2em] uppercase animate-bounce">Scroll to Explore</p>
         </div>
       </section>
 
-      {/* Trust Indicators */}
-      <div className="bg-slate-950 border-y border-slate-900 py-10">
+      {/* Trust & Real Results */}
+      <section className="py-20 bg-slate-900 border-y border-slate-800">
         <div className="max-w-7xl mx-auto px-4">
-            <p className="text-center text-slate-500 text-sm uppercase tracking-widest mb-8">Trusted by Leading Sectors</p>
-            <div className="flex flex-wrap justify-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-                {['Real Estate', 'Luxury Hospitality', 'FinTech', 'Healthcare', 'E-Commerce'].map((item) => (
-                    <span key={item} className="text-xl font-bold text-slate-300">{item}</span>
-                ))}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <div className="text-center lg:text-left">
+              <h2 className="text-3xl font-bold text-white mb-4">Actual Results, <br/><span className="text-amber-500">No Fluff.</span></h2>
+              <p className="text-slate-400">While others show you charts of 'Followers', we show you charts of 'Qualified Leads'.</p>
             </div>
+            <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[
+                { label: "Real Estate Developer", result: "420% Increase in Direct Bookings", sub: "Via targeted intent-based ads" },
+                { label: "Dental Clinic Chain", result: "180 New Patients / Month", sub: "Via Local SEO & Map Domination" }
+              ].map((res, i) => (
+                <div key={i} className="bg-slate-950 p-6 rounded-2xl border border-slate-800 flex flex-col justify-center">
+                   <div className="text-amber-500 font-bold text-xs uppercase mb-2">{res.label}</div>
+                   <div className="text-2xl font-bold text-white mb-1">{res.result}</div>
+                   <div className="text-slate-500 text-sm">{res.sub}</div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
 
-      {/* Quick Services Intro */}
+      {/* Simple Services: What's in it for you? */}
       <section className="py-24 bg-slate-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Holistic Digital Growth</h2>
-            <div className="w-24 h-1 bg-amber-500 mx-auto rounded-full mb-6"></div>
-            <p className="text-slate-400 max-w-2xl mx-auto">Comprehensive solutions tailored for today's competitive digital landscape.</p>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">How We Make You Money</h2>
+            <p className="text-slate-400 max-w-2xl mx-auto text-lg">Marketing is simple when you focus on the right things.</p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { icon: <Target className="w-8 h-8" />, title: "Advanced SEO", desc: "Dominate search rankings and drive organic traffic.", link: Page.SERVICE_SEO },
-              { icon: <TrendingUp className="w-8 h-8" />, title: "Paid Media", desc: "High-intent campaigns for instant ROI.", link: Page.SERVICE_PAID },
-              { icon: <Users className="w-8 h-8" />, title: "Influencer Network", desc: "Access the industry's most trusted voices.", link: Page.SERVICE_INFLUENCER },
-              { icon: <BarChart3 className="w-8 h-8" />, title: "Social Strategy", desc: "Build a community that loves your brand.", link: Page.SERVICE_SOCIAL },
+              { 
+                icon: <Target className="w-10 h-10" />, 
+                title: "Get Found When They Search", 
+                benefit: "SEO isn't just ranking; it's being the first answer when a customer has a problem. We put you in front of people ready to buy today.",
+                cta: "Own Google" 
+              },
+              { 
+                icon: <Zap className="w-10 h-10" />, 
+                title: "Scale Your Sales with Ads", 
+                benefit: "Don't 'boost posts'. We build high-precision systems that turn $1 of ad spend into $4+ of revenue. Predictable. Scalable. Profitable.",
+                cta: "Start Scaling" 
+              },
+              { 
+                icon: <ShieldCheck className="w-10 h-10" />, 
+                title: "Build A Brand They Trust", 
+                benefit: "If your social media looks cheap, your product feels cheap. We create premium content that makes customers choose you over the competition.",
+                cta: "Upgrade Brand" 
+              },
             ].map((s, idx) => (
-              <div 
-                key={idx} 
-                className="bg-slate-900/50 p-8 rounded-2xl border border-slate-800 hover:border-amber-500/50 transition-colors group cursor-pointer relative overflow-hidden" 
-                onClick={() => onNavigate(s.link)}
-              >
-                <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <ArrowRight className="w-5 h-5 text-amber-500 -rotate-45 group-hover:rotate-0 transition-transform" />
-                </div>
-                <div className="mb-6 p-4 bg-slate-800 rounded-xl w-fit group-hover:bg-amber-500 group-hover:text-slate-900 transition-colors text-amber-500">
+              <div key={idx} className="bg-slate-900 p-10 rounded-3xl border border-slate-800 hover:border-amber-500 transition-all group">
+                <div className="mb-6 text-amber-500 group-hover:scale-110 transition-transform inline-block">
                   {s.icon}
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">{s.title}</h3>
-                <p className="text-slate-400 text-sm mb-4">{s.desc}</p>
-                <span className="text-amber-500 text-sm font-semibold group-hover:underline">Explore Service</span>
+                <h3 className="text-2xl font-bold text-white mb-4">{s.title}</h3>
+                <p className="text-slate-400 mb-8 leading-relaxed">{s.benefit}</p>
+                <button onClick={() => onNavigate(Page.CONTACT)} className="flex items-center gap-2 text-amber-500 font-bold group-hover:gap-4 transition-all uppercase text-sm tracking-widest">
+                  {s.cta} <ArrowRight className="w-4 h-4" />
+                </button>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Why Choose OptimizeHub */}
-      <section className="py-24 bg-slate-900 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div>
-                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Why Brands Choose <span className="text-gradient-gold">OptimizeHub</span></h2>
-                    <p className="text-slate-400 text-lg mb-8 leading-relaxed">
-                        In a world of noise, we create clarity. Our deep understanding of the digital ecosystem allows us to craft strategies that don't just reach audiences, but convert them. We blend creativity with data science to deliver results that matter.
-                    </p>
-                    <ul className="space-y-4">
-                        {[
-                            "Deep Market Expertise",
-                            "Data-Driven Strategy",
-                            "Performance-Based ROI Focus",
-                            "Premium, Luxury-First Approach"
-                        ].map((item, i) => (
-                            <li key={i} className="flex items-center text-slate-300">
-                                <CheckCircle2 className="w-6 h-6 text-amber-500 mr-3 flex-shrink-0" />
-                                <span className="text-lg">{item}</span>
-                            </li>
-                        ))}
-                    </ul>
-                    <div className="mt-10">
-                        <button onClick={() => onNavigate(Page.ABOUT)} className="text-white border-b border-amber-500 pb-1 hover:text-amber-500 transition-colors">Read our story</button>
-                    </div>
-                </div>
-                <div className="relative">
-                    <div className="absolute -inset-4 bg-amber-500/20 rounded-3xl blur-xl"></div>
-                    <img 
-                        src="https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=1000&auto=format&fit=crop" 
-                        alt="City Skyline" 
-                        className="relative rounded-2xl shadow-2xl border border-slate-700 grayscale hover:grayscale-0 transition-all duration-700"
-                    />
-                </div>
-            </div>
-        </div>
-      </section>
-
-      {/* Industries We Serve */}
-      <section className="py-20 bg-slate-950">
+      {/* Human Proof: Testimonials */}
+      <section className="py-24 bg-slate-900 border-t border-slate-800 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4">
-            <h2 className="text-3xl font-bold text-white text-center mb-12">Industries We Scale</h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                {[
-                    {name: "Real Estate", icon: <Building2 className="w-8 h-8"/>},
-                    {name: "Luxury Hospitality", icon: <Star className="w-8 h-8"/>},
-                    {name: "Medical Clinics", icon: <TrendingUp className="w-8 h-8"/>},
-                    {name: "E-Commerce", icon: <Trophy className="w-8 h-8"/>}
-                ].map((ind, idx) => (
-                    <div key={idx} className="bg-slate-900 border border-slate-800 p-6 rounded-xl text-center hover:border-amber-500 transition-colors group">
-                        <div className="text-slate-500 group-hover:text-amber-500 mb-4 flex justify-center transition-colors">
-                            {ind.icon}
-                        </div>
-                        <h3 className="text-white font-semibold">{ind.name}</h3>
-                    </div>
-                ))}
-            </div>
-        </div>
-      </section>
-
-      {/* Case Study Highlights */}
-      <section className="py-24 bg-slate-900">
-         <div className="max-w-7xl mx-auto px-4">
-            <div className="flex flex-col md:flex-row justify-between items-end mb-12">
-                <div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Proven Results</h2>
-                    <p className="text-slate-400">See how we've transformed businesses across key sectors.</p>
-                </div>
-                <button onClick={() => onNavigate(Page.CONTACT)} className="mt-4 md:mt-0 text-amber-500 font-bold hover:text-white transition-colors">Start your project &rarr;</button>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {[
-                    { title: "Luxury Real Estate", metric: "+400%", desc: "Increase in qualified leads for a premium developer within 3 months via Google Ads." },
-                    { title: "Dental Clinic", metric: "#1 Ranking", desc: "Achieved top local SEO positions for competitive keywords, driving massive footfall." },
-                    { title: "Fashion Retailer", metric: "12x ROAS", desc: "Generated exceptional returns through a targeted Influencer & Instagram strategy." }
-                ].map((study, idx) => (
-                    <div key={idx} className="bg-slate-950 p-8 rounded-2xl border-l-4 border-amber-500 shadow-xl">
-                        <div className="text-4xl font-bold text-white mb-2">{study.metric}</div>
-                        <h3 className="text-xl font-bold text-amber-500 mb-4">{study.title}</h3>
-                        <p className="text-slate-400 text-sm leading-relaxed">{study.desc}</p>
-                    </div>
-                ))}
-            </div>
-         </div>
-      </section>
-
-      {/* Instant Strategy Generator */}
-      <section id="strategy-generator" className="py-24 bg-slate-950 relative overflow-hidden border-t border-slate-800">
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-amber-500/5 blur-[120px]"></div>
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            
-            {/* Text Side */}
-            <div>
-              <div className="flex items-center gap-3 mb-6">
-                <Bot className="w-8 h-8 text-amber-500" />
-                <h2 className="text-3xl md:text-4xl font-bold text-white">Instant Strategy Generator</h2>
-              </div>
-              <h3 className="text-xl text-amber-500 mb-4">Complimentary growth strategy</h3>
-              <p className="text-slate-400 text-lg mb-8 leading-relaxed">
-                Experience the power of AI-driven insights. Tell us about your current challenges, and we will generate a high-level strategy tailored to solve them.
-              </p>
-              <ul className="space-y-4 mb-8">
-                {[
-                  "Tailored to your specific problem",
-                  "Identifies key growth channels",
-                  "Provides actionable initial steps"
-                ].map((item, i) => (
-                  <li key={i} className="flex items-center text-slate-300">
-                    <CheckCircle2 className="w-5 h-5 text-amber-500 mr-3" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <div className="p-4 bg-slate-900 border border-slate-800 rounded-lg">
-                <p className="text-sm text-slate-400 mb-2">Prefer to chat directly?</p>
-                <p className="text-white font-bold text-lg">WhatsApp: +971 7020895818</p>
-              </div>
-            </div>
-
-            {/* Interactive Form Side */}
-            <div className="bg-slate-900/80 border border-slate-700 rounded-2xl p-8 shadow-2xl relative backdrop-blur-sm">
-              {!strategy ? (
-                <form onSubmit={handleGenerateStrategy} className="space-y-5">
-                  <div>
-                    <label className="block text-xs font-bold text-slate-400 mb-1 uppercase tracking-wider">Business Name</label>
-                    <input 
-                      type="text" 
-                      required
-                      value={businessName}
-                      onChange={(e) => setBusinessName(e.target.value)}
-                      className="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-colors placeholder-slate-600"
-                      placeholder="e.g. Acme Corp"
-                    />
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-bold text-slate-400 mb-1 uppercase tracking-wider">Industry</label>
-                      <input 
-                        type="text" 
-                        required
-                        value={industry}
-                        onChange={(e) => setIndustry(e.target.value)}
-                        className="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-colors placeholder-slate-600"
-                        placeholder="e.g. Technology"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-bold text-slate-400 mb-1 uppercase tracking-wider">Target Audience</label>
-                      <input 
-                        type="text" 
-                        value={audience}
-                        onChange={(e) => setAudience(e.target.value)}
-                        className="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-colors placeholder-slate-600"
-                        placeholder="e.g. Professionals"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <label className="block text-xs font-bold text-slate-400 mb-1 uppercase tracking-wider">Phone Number</label>
-                    <input 
-                      type="tel" 
-                      required
-                      value={phoneNumber}
-                      onChange={(e) => setPhoneNumber(e.target.value)}
-                      className="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-colors placeholder-slate-600"
-                      placeholder="+971..."
-                    />
-                  </div>
-                  <div>
-                      <label className="block text-xs font-bold text-slate-400 mb-1 uppercase tracking-wider">What problem are you facing?</label>
-                      <textarea
-                        required
-                        value={marketingProblem}
-                        onChange={(e) => setMarketingProblem(e.target.value)}
-                        rows={3}
-                        className="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-colors placeholder-slate-600 resize-none"
-                        placeholder="e.g. Getting traffic but no leads, High ad costs..."
-                      ></textarea>
-                  </div>
-
-                  <button 
-                    type="submit"
-                    disabled={loading}
-                    className="w-full bg-amber-500 hover:bg-amber-600 disabled:bg-slate-700 text-slate-950 font-bold py-4 rounded-lg transition-all flex items-center justify-center gap-2 mt-2"
-                  >
-                    {loading ? (
-                      <>
-                        <Sparkles className="w-5 h-5 animate-spin" /> Analyzing Strategy...
-                      </>
-                    ) : (
-                      <>
-                        Generate Strategy <ArrowRight className="w-5 h-5" />
-                      </>
-                    )}
-                  </button>
-                </form>
-              ) : (
-                <div className="animate-fade-in">
-                  <div className="mb-6 flex justify-between items-start">
-                    <h3 className="text-xl font-bold text-amber-500">{strategy.title}</h3>
-                    <button onClick={() => setStrategy(null)} className="text-xs text-slate-500 hover:text-white underline">Reset</button>
-                  </div>
-                  <div className="space-y-4 mb-6">
-                    {strategy.points.map((point, i) => (
-                      <div key={i} className="flex items-start gap-3 bg-slate-950 p-4 rounded-lg border border-slate-800">
-                        <span className="flex-shrink-0 w-6 h-6 rounded-full bg-amber-500/20 text-amber-500 flex items-center justify-center text-sm font-bold">
-                          {i + 1}
-                        </span>
-                        <p className="text-sm text-slate-300">{point}</p>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="bg-slate-950 p-6 rounded-xl border border-amber-500/30 text-center">
-                    <p className="text-white font-semibold mb-3">Ready to execute this plan?</p>
-                    <button 
-                      onClick={() => window.open('https://wa.me/9717020895818', '_blank')}
-                      className="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold py-3 rounded-lg transition-colors flex justify-center items-center gap-2"
-                    >
-                      Book Strategy Call on WhatsApp
-                    </button>
-                  </div>
-                </div>
-              )}
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-white mb-4">Word on the Street</h2>
+            <div className="flex justify-center gap-1">
+              {[1,2,3,4,5].map(i => <Star key={i} className="w-5 h-5 fill-amber-500 text-amber-500" />)}
             </div>
           </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              { 
+                quote: "I was tired of agencies sending me 50-page reports that meant nothing. OptimizeHub just focused on my sales. My revenue doubled in 4 months.",
+                author: "Ahmed R.",
+                role: "Real Estate Founder"
+              },
+              { 
+                quote: "The team is actually available. I don't talk to a 'junior account manager', I talk to the people doing the work. Best decision for my clinic.",
+                author: "Dr. Sarah L.",
+                role: "Clinic Owner"
+              },
+              { 
+                quote: "They took our Instagram from looking like a hobby to looking like a luxury brand. The influencer connections they have are insane.",
+                author: "James W.",
+                role: "Hospitality CEO"
+              }
+            ].map((t, i) => (
+              <div key={i} className="bg-slate-950 p-8 rounded-2xl border border-slate-800 relative">
+                <Quote className="absolute top-6 right-6 w-8 h-8 text-amber-500/20" />
+                <p className="text-slate-300 italic mb-6 leading-relaxed">"{t.quote}"</p>
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-full bg-amber-500/20 flex items-center justify-center font-bold text-amber-500">
+                    {t.author[0]}
+                  </div>
+                  <div>
+                    <div className="text-white font-bold">{t.author}</div>
+                    <div className="text-slate-500 text-xs">{t.role}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-24 bg-slate-950 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 to-transparent"></div>
+        <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">Ready to Stop Guessing?</h2>
+          <p className="text-xl text-slate-400 mb-12">
+            Most agencies will ask for a 12-month contract. We just ask for 30 minutes. Let’s look at your numbers and see where you're losing money.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button 
+               onClick={() => onNavigate(Page.CONTACT)}
+               className="bg-amber-500 hover:bg-amber-600 text-slate-950 px-12 py-5 rounded-full font-bold text-xl shadow-xl shadow-amber-500/30 transition-transform hover:scale-105"
+            >
+              Request Free Consultation
+            </button>
+          </div>
+          <p className="mt-8 text-slate-500 text-sm">No sales pitch. Just data and a strategy you can use with or without us.</p>
         </div>
       </section>
     </div>

@@ -27,7 +27,7 @@ const SocialPage: React.FC<Props> = ({ onNavigate }) => {
               In a world driven by aesthetics and status, your social presence is your digital storefront. We build premium, engaging brands on Instagram, TikTok, Snapchat, and LinkedIn.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <a href="https://wa.me/9717020895818" target="_blank" rel="noopener noreferrer" className="bg-amber-500 hover:bg-amber-600 text-slate-950 px-8 py-4 rounded-full font-bold text-lg inline-flex items-center justify-center gap-2 transition-all hover:scale-105">
+              <a href="https://wa.me/971505975089" target="_blank" rel="noopener noreferrer" className="bg-amber-500 hover:bg-amber-600 text-slate-950 px-8 py-4 rounded-full font-bold text-lg inline-flex items-center justify-center gap-2 transition-all hover:scale-105">
                 <MessageCircle className="w-5 h-5"/> Start Your Growth
               </a>
             </div>
@@ -142,7 +142,7 @@ const SocialPage: React.FC<Props> = ({ onNavigate }) => {
                 <div className="bg-gradient-to-br from-amber-500 to-amber-600 p-8 rounded-2xl text-center shadow-lg">
                     <h3 className="text-slate-900 font-bold text-xl mb-4">Let's Get Creative</h3>
                     <p className="text-slate-900/80 text-sm mb-6">Book a consultation to see our portfolio.</p>
-                    <a href="https://wa.me/9717020895818" target="_blank" rel="noopener noreferrer" className="bg-slate-950 text-white w-full py-3 rounded-lg font-bold hover:bg-slate-900 transition-colors block">
+                    <a href="https://wa.me/971505975089" target="_blank" rel="noopener noreferrer" className="bg-slate-950 text-white w-full py-3 rounded-lg font-bold hover:bg-slate-900 transition-colors block">
                         WhatsApp Us
                     </a>
                 </div>

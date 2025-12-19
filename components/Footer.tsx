@@ -14,7 +14,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           
           {/* Brand */}
           <div className="col-span-1 md:col-span-1">
-            <h3 className="text-2xl font-bold text-white mb-4 uppercase">Optimize<span className="text-amber-500">Hub</span></h3>
+            <h3 className="text-3xl font-bold text-white mb-4">Optimize<span className="text-amber-500">Hub</span></h3>
             <p className="text-slate-400 text-sm leading-relaxed mb-6">
               Optimization Meets Ambition. Your Digital Growth Partner in Dubai.
             </p>
@@ -56,7 +56,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </li>
               <li className="flex items-center text-slate-400 text-sm">
                 <Mail className="w-5 h-5 mr-3 text-amber-500 shrink-0" />
-                <span>hello@optimizehub.com</span>
+                <span>hello@optimizehub.co</span>
               </li>
             </ul>
           </div>

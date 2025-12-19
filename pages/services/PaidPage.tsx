@@ -27,7 +27,7 @@ const PaidPage: React.FC<Props> = ({ onNavigate }) => {
               Stop wasting budget on clicks that don't convert. We engineer high-precision PPC campaigns on Google, YouTube, and Social Platforms that target high-intent buyers.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <a href="https://wa.me/9717020895818" target="_blank" rel="noopener noreferrer" className="bg-amber-500 hover:bg-amber-600 text-slate-950 px-8 py-4 rounded-full font-bold text-lg inline-flex items-center justify-center gap-2 transition-all hover:scale-105">
+              <a href="https://wa.me/971505975089" target="_blank" rel="noopener noreferrer" className="bg-amber-500 hover:bg-amber-600 text-slate-950 px-8 py-4 rounded-full font-bold text-lg inline-flex items-center justify-center gap-2 transition-all hover:scale-105">
                 <MessageCircle className="w-5 h-5"/> Launch Campaigns
               </a>
             </div>
@@ -157,7 +157,7 @@ const PaidPage: React.FC<Props> = ({ onNavigate }) => {
                 <div className="bg-gradient-to-br from-amber-500 to-amber-600 p-8 rounded-2xl text-center shadow-lg">
                     <h3 className="text-slate-900 font-bold text-xl mb-4">Need Fast Results?</h3>
                     <p className="text-slate-900/80 text-sm mb-6">Let's calculate your potential ROAS today.</p>
-                    <a href="https://wa.me/9717020895818" target="_blank" rel="noopener noreferrer" className="bg-slate-950 text-white w-full py-3 rounded-lg font-bold hover:bg-slate-900 transition-colors block">
+                    <a href="https://wa.me/971505975089" target="_blank" rel="noopener noreferrer" className="bg-slate-950 text-white w-full py-3 rounded-lg font-bold hover:bg-slate-900 transition-colors block">
                         Get a Proposal
                     </a>
                 </div>

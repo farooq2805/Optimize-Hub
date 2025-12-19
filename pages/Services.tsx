@@ -132,12 +132,12 @@ const Services: React.FC<ServicesProps> = ({ onNavigate }) => {
         <div className="text-center">
             <h3 className="text-2xl font-bold text-white mb-6">Need a custom package?</h3>
              <a 
-              href="https://wa.me/9717020895818" 
+              href="https://wa.me/971505975089" 
               target="_blank" 
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center border border-slate-600 hover:border-amber-500 hover:bg-amber-500 hover:text-slate-950 text-slate-300 px-8 py-4 rounded-full transition-all font-semibold"
             >
-                Contact us on WhatsApp (+971 7020895818)
+                Contact us on WhatsApp (+971 50 597 5089)
             </a>
         </div>
       </div>

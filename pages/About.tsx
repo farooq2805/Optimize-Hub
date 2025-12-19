@@ -1,165 +1,120 @@
 import React from 'react';
-import { Globe2, MapPin, Target, ArrowRight, Linkedin } from 'lucide-react';
 import { Page } from '../types';
+import { ArrowRight, Linkedin, Heart, Coffee, ShieldCheck } from 'lucide-react';
 
 interface AboutProps {
   onNavigate: (page: Page) => void;
 }
 
 const About: React.FC<AboutProps> = ({ onNavigate }) => {
-  const team = [
-    {
-      name: "Nisha Sequeira",
-      role: "Founder & Influencer Marketing Head",
-      desc: "The strategic force behind OptimizeHub. Driving authentic connections that convert.",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400&h=400",
-      linkedin: "https://www.linkedin.com/in/nisha-sequeira"
-    },
-    {
-      name: "Farooq Syed",
-      role: "Co-Founder & Head of Paid Media",
-      desc: "Expert in delivering high ROAS campaigns across major platforms, maximizing immediate returns.",
-      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400&h=400",
-      linkedin: "https://www.linkedin.com/in/farooq-syed"
-    },
-    {
-      name: "Melroy",
-      role: "Head of Social Media",
-      desc: "10 years of experience crafting winning strategies for F&B, Luxury Watches, Real Estate, and Clinics.",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400&h=400",
-      linkedin: "https://www.linkedin.com/in/melroy-social"
-    }
-  ];
-
   return (
-    <div className="min-h-screen">
-      {/* Header */}
-      <div className="relative py-24 bg-slate-950 overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-amber-500/10 rounded-full blur-[100px]"></div>
-        <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-8 leading-tight">
-            Optimization Meets Ambition: <br/>
-            We Are <span className="text-gradient-gold">OptimizeHub</span>,<br/>
-            Your Digital Growth Partner.
+    <div className="min-h-screen pb-20">
+      {/* Human Header */}
+      <section className="py-24 bg-slate-950 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className="text-4xl md:text-6xl font-black text-white mb-8">
+            We Started Because We Were <br/>
+            <span className="text-gradient-gold">Tired of the Fluff.</span>
           </h1>
+          <p className="text-xl text-slate-300 leading-relaxed mb-12">
+            OptimizeHub isn't a factory. We are a boutique team of strategists who actually care about whether your business succeeds. Why? Because our reputation is built on your ROI, not our award shelf.
+          </p>
         </div>
-      </div>
+      </section>
 
-      {/* Core Identity */}
+      {/* The Story */}
       <section className="py-20 bg-slate-900 border-y border-slate-800">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-2xl font-bold text-white mb-6">The Core Identity</h2>
-          <p className="text-lg text-slate-300 leading-8">
-            OptimizeHub was founded on one simple principle: <span className="text-amber-500 font-semibold">Marketing spend should always generate measurable profit.</span> In today's competitive digital landscape, standing still means falling behind. We are a team of data scientists, creative strategists, and performance marketers dedicated to turning digital potential into tangible ROI.
-          </p>
-          <div className="mt-10 flex justify-center gap-4 text-sm font-bold uppercase tracking-widest text-slate-400">
-            <span>Data-Driven</span> • <span>Performance-Focused</span> • <span>Results-Centric</span>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div className="relative">
+              <img 
+                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop" 
+                className="rounded-3xl shadow-2xl grayscale hover:grayscale-0 transition-all duration-700" 
+                alt="Our Team"
+              />
+              <div className="absolute -bottom-6 -right-6 bg-amber-500 p-6 rounded-2xl hidden md:block">
+                 <p className="text-slate-950 font-black text-2xl">100+</p>
+                 <p className="text-slate-900 font-bold text-sm uppercase">Projects Scaled</p>
+              </div>
+            </div>
+            <div>
+              <h2 className="text-3xl font-bold text-white mb-6">Real Humans. Real Strategy.</h2>
+              <div className="space-y-6 text-slate-400 text-lg">
+                <p>
+                  After years in the "big agency" world, our founders realized that most clients were paying for fancy offices and junior account managers who didn't understand their business.
+                </p>
+                <p>
+                  We built **OptimizeHub** to be the opposite. When you work with us, you work directly with the experts. We don't hide behind jargon or complicated reports. We speak the language of growth.
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6">
+                  <div className="flex items-center gap-3">
+                    <Coffee className="w-6 h-6 text-amber-500" />
+                    <span className="text-white font-bold">Coffee & Data Driven</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Heart className="w-6 h-6 text-amber-500" />
+                    <span className="text-white font-bold">Obsessed with Results</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Unique Edge */}
-      <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-white mb-4">Our Unique Edge</h2>
-          <p className="text-slate-400 max-w-3xl mx-auto">
-            What makes OptimizeHub different is our deep understanding of the digital ecosystem. We don't just run campaigns; we build strategies that resonate, understanding the nuances of:
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          {/* Edge 1 */}
-          <div className="bg-slate-900/50 p-8 rounded-2xl border border-slate-800 hover:border-amber-500/50 transition-colors">
-            <Globe2 className="w-10 h-10 text-amber-500 mb-6" />
-            <h3 className="text-xl font-bold text-white mb-4">Global Media Landscape</h3>
-            <p className="text-slate-400 leading-relaxed">
-              Expertise in platforms and influencers specific to your target markets, ensuring cultural relevance and maximum reach.
-            </p>
-          </div>
-          
-          {/* Edge 2 */}
-          <div className="bg-slate-900/50 p-8 rounded-2xl border border-slate-800 hover:border-amber-500/50 transition-colors">
-            <MapPin className="w-10 h-10 text-amber-500 mb-6" />
-            <h3 className="text-xl font-bold text-white mb-4">Search Authority</h3>
-            <p className="text-slate-400 leading-relaxed">
-              Mastering local and global SEO strategies, including Google My Business optimization, crucial for businesses targeting specific regions.
-            </p>
-          </div>
-
-          {/* Edge 3 */}
-          <div className="bg-slate-900/50 p-8 rounded-2xl border border-slate-800 hover:border-amber-500/50 transition-colors">
-            <Target className="w-10 h-10 text-amber-500 mb-6" />
-            <h3 className="text-xl font-bold text-white mb-4">High-Intent Strategy</h3>
-            <p className="text-slate-400 leading-relaxed">
-              Focusing on high-value keywords and lead generation strategies essential for competitive industries (Real Estate, Hospitality, Finance, etc.).
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Team Section */}
-      <section className="py-24 bg-slate-900">
+      {/* Team - The People */}
+      <section className="py-24 bg-slate-950">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-white mb-4">Meet the OptimizeHub Team</h2>
-            <p className="text-slate-400">Our leadership is driven by measurable results and deep industry insight.</p>
+            <h2 className="text-4xl font-bold text-white mb-4">The People Behind the Growth</h2>
+            <p className="text-slate-400">No interns. No outsourcing. Just senior specialists.</p>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {team.map((member, index) => (
-              <div key={index} className="group bg-slate-950 p-6 rounded-2xl border border-slate-800 hover:border-slate-700 transition-all duration-300">
-                <div className="w-32 h-32 mx-auto mb-6 rounded-full border-2 border-slate-700 group-hover:border-amber-500 transition-colors overflow-hidden relative">
-                   <img 
-                    src={member.image} 
-                    alt={member.name}
-                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
-                   />
-                </div>
-                <h3 className="text-xl font-bold text-white text-center">{member.name}</h3>
-                <p className="text-amber-500 text-sm text-center mb-4 font-medium">{member.role}</p>
-                <div className="flex justify-center">
-                  <a 
-                    href={member.linkedin} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-slate-500 hover:text-amber-500 transition-colors text-sm font-semibold border border-slate-800 px-4 py-2 rounded-full hover:border-amber-500"
-                  >
-                    <Linkedin className="w-4 h-4"/>
-                    <span>Connect</span>
-                  </a>
-                </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {[
+              {
+                name: "Nisha Sequeira",
+                role: "The Connector",
+                bio: "She doesn't just manage influencers; she builds relationships that actually drive sales.",
+                image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400&h=400"
+              },
+              {
+                name: "Farooq Syed",
+                role: "The Strategist",
+                bio: "If there's a dollar to be saved in your ad budget, Farooq will find it and reinvest it for profit.",
+                image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400&h=400"
+              },
+              {
+                name: "Melroy",
+                role: "The Creative",
+                bio: "He turns boring business concepts into viral content that people actually want to share.",
+                image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400&h=400"
+              }
+            ].map((member, i) => (
+              <div key={i} className="bg-slate-900/50 p-8 rounded-3xl border border-slate-800 text-center hover:border-amber-500 transition-colors">
+                <img src={member.image} className="w-32 h-32 rounded-full mx-auto mb-6 object-cover border-2 border-slate-700" alt={member.name} />
+                <h3 className="text-2xl font-bold text-white mb-1">{member.name}</h3>
+                <p className="text-amber-500 font-bold text-sm uppercase mb-4">{member.role}</p>
+                <p className="text-slate-400 text-sm leading-relaxed mb-6">{member.bio}</p>
+                <a href="#" className="inline-flex items-center gap-2 text-slate-500 hover:text-white transition-colors">
+                  <Linkedin className="w-5 h-5" /> <span>LinkedIn</span>
+                </a>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Philosophy & Services Link */}
-      <section className="py-24 max-w-5xl mx-auto px-4 text-center">
-        <h2 className="text-3xl font-bold text-white mb-8">Our Philosophy</h2>
-        <p className="text-lg text-slate-300 leading-relaxed mb-12">
-          We combine the power of <span className="text-amber-500">SEO</span> for long-term foundation, <span className="text-amber-500">Paid Marketing</span> for immediate impact, <span className="text-amber-500">Social Media</span> for brand love, and <span className="text-amber-500">Influencer Marketing</span> for authentic reach.
-        </p>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left mb-16">
-            <div className="bg-slate-900/30 p-8 rounded-xl border border-slate-800 hover:border-slate-700 transition-colors">
-                <h3 className="text-amber-500 font-bold text-xl mb-4">Our Mission</h3>
-                <p className="text-slate-400">To empower businesses with precision digital marketing solutions, transforming advertising spend into measurable, sustainable growth and maximizing Return on Investment.</p>
-            </div>
-            <div className="bg-slate-900/30 p-8 rounded-xl border border-slate-800 hover:border-slate-700 transition-colors">
-                <h3 className="text-amber-500 font-bold text-xl mb-4">Our Vision</h3>
-                <p className="text-slate-400">To be recognized as the gold standard for performance-based digital marketing, setting new benchmarks for transparency, innovation, and client success.</p>
-            </div>
-        </div>
-
-        <div className="inline-block">
-          <button 
-            onClick={() => onNavigate(Page.CONTACT)}
-            className="bg-amber-500 hover:bg-amber-600 text-slate-950 px-10 py-5 rounded-full font-bold text-xl transition-all hover:scale-105 flex items-center gap-3 shadow-lg shadow-amber-500/20"
-          >
-            Book a Free Performance Audit <ArrowRight className="w-6 h-6"/>
-          </button>
-        </div>
+      {/* Bottom CTA */}
+      <section className="py-24 max-w-4xl mx-auto px-4 text-center">
+        <h2 className="text-3xl font-bold text-white mb-6">Let's Talk About Your Business.</h2>
+        <p className="text-slate-400 mb-10 text-lg">We're not interested in just another client. We're interested in another success story. Is your business the next one?</p>
+        <button 
+          onClick={() => onNavigate(Page.CONTACT)}
+          className="bg-amber-500 hover:bg-amber-600 text-slate-950 px-10 py-5 rounded-full font-bold text-xl transition-all flex items-center gap-3 mx-auto shadow-2xl shadow-amber-500/20"
+        >
+          Book a Human Consultation <ArrowRight className="w-6 h-6" />
+        </button>
       </section>
     </div>
   );

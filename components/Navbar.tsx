@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Page } from '../types';
-import { Menu, X, Sparkles } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 interface NavbarProps {
   currentPage: Page;
@@ -28,11 +28,10 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
         <div className="flex justify-between h-20 items-center">
           {/* Logo */}
           <div 
-            className="flex-shrink-0 flex items-center cursor-pointer gap-2"
+            className="flex-shrink-0 flex items-center cursor-pointer"
             onClick={() => handleNav(Page.HOME)}
           >
-            <Sparkles className="w-8 h-8 text-amber-500" />
-            <span className="font-bold text-2xl tracking-tighter text-white uppercase">
+            <span className="font-bold text-3xl tracking-tight text-white">
               Optimize<span className="text-amber-500">Hub</span>
             </span>
           </div>
