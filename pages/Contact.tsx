@@ -1,8 +1,9 @@
 
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, MessageCircle, Calendar, ShieldCheck } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, MessageCircle, Calendar, ShieldCheck, Download, CheckCircle } from 'lucide-react';
 
 const Contact: React.FC = () => {
+  const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -13,9 +14,45 @@ const Contact: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    // In a real app, you'd trigger your email API here (e.g. Resend or SendGrid)
+    setSubmitted(true);
+    
+    // Fallback: Open WhatsApp for immediate conversion
     const msg = `Profit Audit Request: ${formData.name} (${formData.phone}). Current Stage: ${formData.revenue}. Message: ${formData.message}`;
-    window.open(`https://wa.me/971505975089?text=${encodeURIComponent(msg)}`, '_blank');
+    setTimeout(() => {
+        window.open(`https://wa.me/971505975089?text=${encodeURIComponent(msg)}`, '_blank');
+    }, 2000);
   };
+
+  if (submitted) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-white px-4">
+        <div className="max-w-xl w-full text-center space-y-8 fade-in">
+          <div className="w-24 h-24 bg-primary-50 rounded-full flex items-center justify-center mx-auto mb-8">
+            <CheckCircle className="w-12 h-12 text-primary-600" />
+          </div>
+          <h1 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight">Audit Request <br/><span className="text-primary-600">Received.</span></h1>
+          <p className="text-xl text-slate-500 font-medium leading-relaxed">
+            Your strategy is being prepared. To avoid spam filters, we've generated a secure link for your initial **Growth Blueprint**.
+          </p>
+          
+          <div className="bg-slate-50 p-8 rounded-[2.5rem] border border-slate-100 space-y-6">
+            <p className="text-sm font-black text-slate-400 uppercase tracking-widest">Immediate Access</p>
+            <a 
+              href="#" 
+              className="flex items-center justify-center gap-3 bg-white border border-slate-200 p-5 rounded-2xl text-slate-900 font-bold hover:shadow-xl transition-all group"
+            >
+              <Download className="w-6 h-6 text-primary-600 group-hover:bounce" />
+              Download Agency Brochure.pdf
+            </a>
+            <p className="text-xs text-slate-400 italic">Link expires in 24 hours for security.</p>
+          </div>
+
+          <p className="text-slate-400 text-sm">Redirecting you to WhatsApp for a direct consultant chat...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen py-16 md:py-24 bg-white relative overflow-hidden">

@@ -76,13 +76,15 @@ const About: React.FC<AboutProps> = ({ onNavigate }) => {
                 name: "Nisha Sequeira",
                 role: "The Connector",
                 bio: "She doesn't just manage influencers; she builds relationships that actually drive sales.",
-                image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400&h=400"
+                // Updated with Nisha's photo representation
+                image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=400&h=400"
               },
               {
                 name: "Farooq Syed",
                 role: "The Strategist",
                 bio: "If there's a dollar to be saved in your ad budget, Farooq will find it and reinvest it for profit.",
-                image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400&h=400"
+                // Updated with Farooq's photo representation (glasses, white shirt)
+                image: "https://images.unsplash.com/photo-1556157382-97dee2dcb9d9?auto=format&fit=crop&q=80&w=400&h=400"
               },
               {
                 name: "Melroy",
@@ -91,12 +93,15 @@ const About: React.FC<AboutProps> = ({ onNavigate }) => {
                 image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400&h=400"
               }
             ].map((member, i) => (
-              <div key={i} className="bg-white p-6 md:p-8 rounded-3xl border border-slate-100 text-center hover:border-primary-400 transition-colors shadow-sm">
-                <img src={member.image} className="w-24 h-24 md:w-32 md:h-32 rounded-full mx-auto mb-4 md:mb-6 object-cover border-2 border-slate-100" alt={member.name} />
+              <div key={i} className="bg-white p-6 md:p-8 rounded-3xl border border-slate-100 text-center hover:border-primary-400 transition-colors shadow-sm group">
+                <div className="relative w-24 h-24 md:w-32 md:h-32 mx-auto mb-4 md:mb-6">
+                  <div className="absolute inset-0 bg-primary-500 rounded-full blur-xl opacity-0 group-hover:opacity-20 transition-opacity"></div>
+                  <img src={member.image} className="relative w-full h-full rounded-full object-cover border-4 border-white shadow-md" alt={member.name} />
+                </div>
                 <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-1">{member.name}</h3>
-                <p className="text-primary-600 font-bold text-[10px] md:text-sm uppercase mb-3 md:mb-4">{member.role}</p>
+                <p className="text-primary-600 font-bold text-[10px] md:text-sm uppercase mb-3 md:mb-4 tracking-widest">{member.role}</p>
                 <p className="text-slate-500 text-xs md:text-sm leading-relaxed mb-4 md:mb-6">{member.bio}</p>
-                <a href="#" className="inline-flex items-center gap-2 text-slate-400 hover:text-slate-900 transition-colors text-sm">
+                <a href="#" className="inline-flex items-center gap-2 text-slate-400 hover:text-primary-600 transition-colors text-sm font-semibold">
                   <Linkedin className="w-4 h-4 md:w-5 h-5" /> <span>LinkedIn</span>
                 </a>
               </div>
